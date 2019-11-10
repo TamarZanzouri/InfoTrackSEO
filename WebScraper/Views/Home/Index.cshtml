@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>SEO InfoTrack</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="p-4">
+        <div class="form-horizontal">
+            <h1>InfoTrack SEO</h1>
+            <hr>
+            <div class="form-group">
+                <label class="control-label col-md-2" for="url">Url</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="url" name="url" type="text" value="" data-bind="value: url">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-6" for="keywords">Keywords (add comma between keywords)</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="keywords" name="keywords" type="text" value="" data-bind="value: keywords">
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="text-danger" data-bind="visible: showErrorMsg">Please enter both fields</div>
+                <div class="col-md-offset-2 col-md-10">
+                    <button data-bind="click: getResults" class="btn btn-primary">get results</button>
+                </div>
+            </div>
+            <div data-bind="foreach: Paragraphs">
+                <div class="text-primary" data-bind="text: $data"></div>
+            </div>
+        </div>
+    </div>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/knockout-3.5.1.js"></script>
+    <script src="~/Scripts/KOScripts/KOCreate.js"></script>
+</body>
+</html>
