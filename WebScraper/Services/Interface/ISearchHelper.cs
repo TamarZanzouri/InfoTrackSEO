@@ -5,6 +5,6 @@ namespace WebScraper.Services.Interface
 {
     public interface ISearchHelper
     {
-        string[] SearchResultLocation(List<HtmlSection> htmlSections, string url, string[] keywords);
+        string[] SearchResultLocation(List<HtmlSection> htmlSections, string keywords);
     }
 }

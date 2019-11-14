@@ -3,7 +3,8 @@ namespace WebScraper.Models
 {
     public class RequestParamsModel
     {
-        public string url { get; set; }
-        public string keywords { get; set; }
+        public string SearchUrl { get; set; }
+        public string Keywords { get; set; }
+        public int? SearchNumberResults { get; set; }
     }
 }

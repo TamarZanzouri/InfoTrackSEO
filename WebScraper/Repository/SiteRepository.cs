@@ -14,10 +14,10 @@ namespace WebScraper.Repository
             _searchHelper = searchHelper;
         }
 
-        public async Task<string[]> GetSearchResultLocationAsync(string url, string[] keywords)
+        public async Task<string[]> GetSearchResultLocationAsync(string url, string keywords, int? searchNumberResults)
         {
-            var resultSections = await _googleSiteSEO.GetSiteStreamAsync();
-            return _searchHelper.SearchResultLocation(resultSections, url, keywords);
+            var resultSections = await _googleSiteSEO.GetSiteStreamAsync(keywords, searchNumberResults);
+            return _searchHelper.SearchResultLocation(resultSections, url);
         }
     }
 }

@@ -7,6 +7,6 @@ namespace WebScraper.Services
 {
     public interface ISEOFactory
     {
-        Task<List<HtmlSection>> GetSiteStreamAsync();
+        Task<List<HtmlSection>> GetSiteStreamAsync(string keywords, int? resultsNum);
     }
 }

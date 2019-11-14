@@ -1,0 +1,51 @@
+﻿<Properties StartupConfiguration="{F368AF85-C746-4425-BA39-4142E2AC563C}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="WebScraper/Views/Web.config">
+    <Files>
+      <File FileName="WebScraper/Services/Services/GoogleSite.cs" Line="16" Column="32" />
+      <File FileName="WebScraper/Controllers/HomeController.cs" Line="29" Column="1" />
+      <File FileName="WebScraper/Repository/SiteRepository.cs" Line="19" Column="62" />
+      <File FileName="WebScraper/Services/Services/SearchHelper.cs" Line="19" Column="1" />
+      <File FileName="WebScraper/Services/Interface/ISearchHelper.cs" Line="8" Column="70" />
+      <File FileName="WebScraper/Repository/ISiteRepository.cs" Line="7" Column="106" />
+      <File FileName="WebScraper/Views/Home/Index.cshtml" Line="39" Column="21" />
+      <File FileName="WebScraper/Scripts/KOScripts/KOCreate.js" Line="27" Column="39" />
+      <File FileName="WebScraper/Models/RequestParamsModel.cs" Line="8" Column="40" />
+      <File FileName="WebScraper/Services/Interface/ISEOFactory.cs" Line="10" Column="84" />
+      <File FileName="WebScraper/Views/Web.config" Line="2" Column="16" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="WebScraper" expanded="True">
+            <Node name="WebScraper" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Repository" expanded="True" />
+              <Node name="Scripts" expanded="True">
+                <Node name="KOScripts" expanded="True" />
+              </Node>
+              <Node name="Services" expanded="True">
+                <Node name="Interface" expanded="True" />
+                <Node name="Services" expanded="True" />
+              </Node>
+              <Node name="Views" expanded="True">
+                <Node name="Home" expanded="True" />
+                <Node name="Web.config" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.WebScraper PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/tamar/Desktop/tamar/InfoTrackSEO/WebScraper/Controllers/HomeController.cs" relfile="WebScraper/Controllers/HomeController.cs" line="29" column="1" />
+      <Breakpoint file="/Users/tamar/Desktop/tamar/InfoTrackSEO/WebScraper/Services/Services/GoogleSite.cs" relfile="WebScraper/Services/Services/GoogleSite.cs" line="30" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

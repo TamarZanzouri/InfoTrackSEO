@@ -26,10 +26,9 @@ namespace WebScraper.Controllers
         [HttpPost]
         public async Task<ActionResult> GetResultsAsync(RequestParamsModel request)
         {
-            if(request != null && !string.IsNullOrEmpty(request.url) && !string.IsNullOrEmpty(request.keywords))
+            if(request != null && !string.IsNullOrEmpty(request.SearchUrl))
             {
-                var parsedKeywords = Array.ConvertAll(request.keywords.Split(','), p => p.Trim());//request.keywords.Split(',').ToArray();
-                var result = await _siteRepository.GetSearchResultLocationAsync(request.url, parsedKeywords);
+                var result = await _siteRepository.GetSearchResultLocationAsync(request.SearchUrl, request.Keywords, request.SearchNumberResults);
                 return Json(result);
             }
             return Json(new string[] { "0" });

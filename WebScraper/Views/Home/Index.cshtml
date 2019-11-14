@@ -10,25 +10,33 @@
             <h1>InfoTrack SEO</h1>
             <hr>
             <div class="form-group">
+                <label class="control-label col-md-6" for="searchNumberResults">Number of search results</label>
+                <div class="col-md-4">
+                    <input class="form-control text-box single-line" id="searchNumberResults" name="searchNumberResults" type="number" value="" data-bind="value: searchNumberResults">
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-label col-md-6" for="keywords">Keywords</label>
+                <div class="col-md-10">
+                    <input class="form-control text-box single-line" id="keywords" name="keywords" type="text" value="" data-bind="value: keywords">
+                </div>
+            </div>
+            <div class="form-group">
                 <label class="control-label col-md-2" for="url">Url</label>
                 <div class="col-md-10">
                     <input class="form-control text-box single-line" id="url" name="url" type="text" value="" data-bind="value: url">
                 </div>
             </div>
             <div class="form-group">
-                <label class="control-label col-md-6" for="keywords">Keywords (add comma between keywords)</label>
-                <div class="col-md-10">
-                    <input class="form-control text-box single-line" id="keywords" name="keywords" type="text" value="" data-bind="value: keywords">
-                </div>
-            </div>
-            <div class="form-group">
-                <div class="text-danger" data-bind="visible: showErrorMsg">Please enter both fields</div>
+                <div class="text-danger" data-bind="visible: showErrorMsg">Please enter url to search for</div>
                 <div class="col-md-offset-2 col-md-10">
                     <button data-bind="click: getResults" class="btn btn-primary">get results</button>
                 </div>
-            </div>
-            <div data-bind="foreach: Paragraphs">
-                <div class="text-primary" data-bind="text: $data"></div>
+            <div class="mt-3">
+                <span class="text-primary" data-bind="text: returnMessage"></span>
+                <div data-bind="foreach: paragraphs">
+                    <div class="text-primary" data-bind="text: $data"></div>
+                </div>
             </div>
         </div>
     </div>

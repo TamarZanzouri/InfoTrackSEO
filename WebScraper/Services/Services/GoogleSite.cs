@@ -12,13 +12,10 @@ namespace WebScraper.Services
 {
     public class GoogleSite : ISEOFactory
     {
-        private string url = "https://www.google.com.au/search?num=100&q=online+title+search";
-        //private string fileDelimiter = "<div id=\"bottomads\"></div>";
+        private string url = "https://www.google.com.au";
+        private int numOfResults = 100;
         private string[] delimiter = { "<div><div class=\"ZINbbc xpd O9g5cc uUPGi\"><div class=\"kCrYT\">", "</div></div></div></div></div></div></div></div>" };
         private string[] hrefDelimiter = { "<a href=\"/url?q=", ">" };
-        private string[] titleDelimiter = { "<div class=\"BNeawe vvjwJb AP7Wnd\">", "</div>" };
-        private string[] subTitleDelimiter = { "<div class=\"BNeawe UPmit AP7Wnd\">", "</div></a>" };
-        private string[] descriptionDelimiter = { "<div class=\"BNeawe s3v9rd AP7Wnd\"><div><div><div class=\"BNeawe s3v9rd AP7Wnd\">", "</div></div></div></div></div></div></div></div>" };
         private IParseHelper _parseHelper { get; set; }
 
         public GoogleSite(IParseHelper parseHelper)
@@ -26,12 +23,14 @@ namespace WebScraper.Services
             _parseHelper = parseHelper;
         }
 
-        public async Task<List<HtmlSection>> GetSiteStreamAsync()
+        public async Task<List<HtmlSection>> GetSiteStreamAsync(string keywords, int? resultsNum)
         {
+            numOfResults = resultsNum ?? numOfResults;
+            var searchUrl = GenerateStringUrl(numOfResults, keywords);
             var htmlSections = new List<HtmlSection>();
             CancellationTokenSource cancellationToken = new CancellationTokenSource();
             var httpClient = new HttpClient();
-            HttpResponseMessage request = await httpClient.GetAsync(url);
+            HttpResponseMessage request = await httpClient.GetAsync(searchUrl);
             cancellationToken.Token.ThrowIfCancellationRequested();
 
             var response = await request.Content.ReadAsStreamAsync();
@@ -40,20 +39,28 @@ namespace WebScraper.Services
             var theStreamReader = new StreamReader(response);
             string[] fileLines = theStreamReader.ReadToEnd().Split(delimiter, StringSplitOptions.RemoveEmptyEntries);
 
-            foreach (var section in fileLines.Skip(1).Take(100).Select((value, i) => new { i, value }))
+            foreach (var section in fileLines.Skip(1).Take(numOfResults).Select((value, i) => new { i, value }))
             {
                 if (!string.IsNullOrEmpty(section.value) && section.value.Contains(hrefDelimiter.First()))
                 {
                     var result = new HtmlSection();
                     result.Index = section.i + 1;
                     result.Href = _parseHelper.ParseHtmlTag(section.value, hrefDelimiter);
-                    result.Title = _parseHelper.ParseHtmlTag(section.value, titleDelimiter);
-                    result.SubTitle = _parseHelper.ParseHtmlTag(section.value, subTitleDelimiter);
-                    result.Description = _parseHelper.ParseHtmlTag(section.value, descriptionDelimiter);
                     htmlSections.Add(result);
                 }
             }
             return htmlSections.OrderBy(o => o.Index).ToList();
+        }
+
+        private string GenerateStringUrl(int ResultsNum, string keywords)
+        {
+            var searchUrl = $"{url}/search?num={ResultsNum}";
+            if (!string.IsNullOrEmpty(keywords))
+            {
+                var parsedKeywords = keywords.Replace(' ', '+');
+                searchUrl = $"{searchUrl}&q={parsedKeywords}"; 
+            }
+            return searchUrl;
         }
     }
 }

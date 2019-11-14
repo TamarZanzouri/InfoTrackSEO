@@ -4,6 +4,6 @@ namespace WebScraper.Repository
 {
     public interface ISiteRepository
     {
-        Task<string[]> GetSearchResultLocationAsync(string url, string[] keywords);
+        Task<string[]> GetSearchResultLocationAsync(string url, string keywords, int? searchNumberResults);
     }
 }
